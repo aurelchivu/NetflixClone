@@ -18,16 +18,15 @@ const Nav = () => {
   }, []);
 
   return (
-    <div className={`nav ${showNav && 'nav_black'}`}>
-      {/* <div className='nav nav_black'> */}
-      <div className='nav_contents'>
+    <div className={`nav ${showNav && 'nav__black'}`}>
+      <div className='nav__contents'>
         <img
-          className='nav_logo'
+          className='nav__logo'
           src='/netflix-transparent.png'
           alt='netflix logo'
         />
         <img
-          className='nav_avatar'
+          className='nav__avatar'
           src='https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'
           alt='netflix avatar'
         />

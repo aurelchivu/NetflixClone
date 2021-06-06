@@ -5,8 +5,9 @@ import '../style/HomeScreen.css';
 
 const HomeScreen = () => {
   return (
-    <div className='home-screen'>
+    <div className='home__screen'>
       <Nav />
+      <Banner />
     </div>
   );
 };
