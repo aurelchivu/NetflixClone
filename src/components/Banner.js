@@ -1,8 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../style/Banner.css';
+import axios from '../utils/axios';
+import requests from '../utils/requests';
 
 const Banner = () => {
-  const truncate = (text, n) => text?.length > n ? text.substr(0, n - 1) + '...' : text;
+  const [movie, setMovie] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const request = await axios.get(requests.fetchNetflixOriginals);
+        setMovie(
+          request.data.results[
+            Math.floor(Math.random() * request.data.results.length - 1)
+          ]
+        );
+        console.log(request);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  console.log(movie);
+
+  const truncate = (text, n) =>
+    text?.length > n ? text.substr(0, n - 1) + '...' : text;
+
   return (
     <header
       className='banner'
@@ -20,8 +45,9 @@ const Banner = () => {
         </div>
         <h1 className='banner__description'>
           {truncate(
-            `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis alias distinctio excepturi impedit esse eum voluptatem, aliquam laborum quidem earum molestiae soluta. Aliquid laudantium delectus iure! Aut pariatur numquam iste.`
-          , 150)}
+            `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis alias distinctio excepturi impedit esse eum voluptatem, aliquam laborum quidem earum molestiae soluta. Aliquid laudantium delectus iure! Aut pariatur numquam iste.`,
+            150
+          )}
         </h1>
       </div>
       <div className='banner--fadeBottom' />

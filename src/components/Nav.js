@@ -27,7 +27,7 @@ const Nav = () => {
         />
         <img
           className='nav__avatar'
-          src='https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'
+          src='https://occ-0-3467-3466.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABXrmj4H9RUyDiO28L-KJxDGc9oDijd4jnl5RyCkiWMPB6xFxiVdRiKdOcNjG8kn4A3idJRTGAzuBuQ__c6yl1m0.png?r=fcc'
           alt='netflix avatar'
         />
       </div>
