@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../style/Banner.css';
-import axios from '../utils/axios';
+import axios from 'axios';
 import requests from '../utils/requests';
 
 const Banner = () => {
@@ -15,43 +15,39 @@ const Banner = () => {
             Math.floor(Math.random() * request.data.results.length - 1)
           ]
         );
-        console.log(request);
       } catch (error) {
-        console.log(error);
+        console.log(error.message);
       }
     };
     fetchData();
   }, []);
 
-  console.log(movie);
-
   const truncate = (text, n) =>
     text?.length > n ? text.substr(0, n - 1) + '...' : text;
 
   return (
-    <header
+    <div
       className='banner'
       style={{
         backgroundSize: 'cover',
-        backgroundImage: `url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASIAAACuCAMAAAClZfCTAAAAA1BMVEUAAACnej3aAAAASElEQVR4nO3BMQEAAADCoPVPbQhfoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeA8XKAAFZcBBuAAAAAElFTkSuQmCC')`,
+        backgroundImage: `url('https://image.tmdb.org/t/p/original/${movie?.backdrop_path}')`,
         backgroundPosition: 'center center',
       }}
     >
       <div className='banner__contents'>
-        <h1 className='banner__title'>Movie Name</h1>
+        <h1 className='banner__title'>
+          {movie?.title || movie?.name || movie?.original_name}
+        </h1>
         <div className='banner__title'>
           <button className='banner__button'>Play</button>
           <button className='banner__button'>My List</button>
         </div>
         <h1 className='banner__description'>
-          {truncate(
-            `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis alias distinctio excepturi impedit esse eum voluptatem, aliquam laborum quidem earum molestiae soluta. Aliquid laudantium delectus iure! Aut pariatur numquam iste.`,
-            150
-          )}
+          {truncate(movie?.overview, 150)}
         </h1>
       </div>
       <div className='banner--fadeBottom' />
-    </header>
+    </div>
   );
 };
 
